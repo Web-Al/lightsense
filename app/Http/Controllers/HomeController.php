@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 class HomeController extends Controller
 {
     public function __invoke()
@@ -13,12 +14,12 @@ class HomeController extends Controller
         ];
 
         $features = [
-            ['Presence detection', 'Lights turn on only when someone is in the room and switch off when they leave.', 'M3 12h4l3-8 4 16 3-8h4'],
-            ['Ambient light sensing', 'Skips switching on when daylight is already enough, so you save power.', 'M12 3v2m0 14v2M3 12h2m14 0h2M5.6 5.6l1.4 1.4m10 10l1.4 1.4M5.6 18.4l1.4-1.4m10-10l1.4-1.4M12 8a4 4 0 100 8 4 4 0 000-8z'],
-            ['Energy monitoring', 'A PZEM-004T meter tracks voltage, current and consumption in real time.', 'M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z'],
-            ['Smart schedules', 'A DS3231 real-time clock keeps accurate time for schedule-based rules.', 'M12 6v6l4 2M12 21a9 9 0 100-18 9 9 0 000 18z'],
-            ['Remote dashboard', 'Check status and usage from any browser over Wi-Fi.', 'M2 9a15 15 0 0120 0M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0M12 19.5h.01'],
-            ['Relay control', 'A relay module safely switches one or several lighting circuits.', 'M12 3v9M6.3 6.3a8 8 0 1011.4 0'],
+            ['Presence detection', 'Lights turn on only when someone is in the room and switch off when they leave.', 'M5 19h14M7 19c0-3 2.2-5 5-5s5 2 5 5M9.5 11.5a3.5 3.5 0 015 0M7 9a7 7 0 0110 0'],
+            ['Ambient light sensing', 'Skips switching on when daylight is already enough, so you save power.', 'M2 15h5M17 15h5M7 12h10v6H7zM5 4l4 4M5 4v3M5 4h3M10 3l4 4M10 3v3M10 3h3'],
+            ['Energy monitoring', 'A PZEM-004T meter tracks voltage, current and consumption in real time.', 'M12 3a9 9 0 100 18 9 9 0 000-18zM12 12l4-4M6 14h.01M8 8.5h.01M12 6h.01M16 8.5h.01M18 14h.01'],
+            ['Smart schedules', 'A DS3231 real-time clock keeps accurate time for schedule-based rules.', 'M2 12h6M16 12h6M8 7v10M16 7v10M10.5 8h3v8h-3z'],
+            ['Remote dashboard', 'Check status and usage from any browser over Wi-Fi.', 'M12 21v-9M12 12L7 3M12 12l5-9M7 3h10'],
+            ['Relay control', 'A relay module safely switches one or several lighting circuits.', 'M3 8h4M17 8h4M7 5h10v6H7zM3 17h5M8 17l8-4M17 13h4M17 19h4'],
         ];
 
         $hardware = [

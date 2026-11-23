@@ -31,7 +31,7 @@ class LoginController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard'));
+        return redirect()->intended(route('dashboard'))->with('success', 'Welcome back.');
     }
 
     public function destroy(Request $request): RedirectResponse
@@ -41,6 +41,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', 'You have signed out.');
     }
 }

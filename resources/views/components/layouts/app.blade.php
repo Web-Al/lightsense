@@ -16,5 +16,6 @@
 </head>
 <body class="min-h-screen bg-ink text-white antialiased">
     {{ $slot }}
+    <x-toast />
 </body>
 </html>

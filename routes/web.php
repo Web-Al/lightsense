@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\DeviceSettingsController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\UserController;
@@ -28,14 +29,16 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    // Staff and administrators can change schedules
+    // Staff and administrators can change schedules and the light controls
     Route::middleware(EnsureRole::class . ':staff')->group(function () {
         Route::post('/dashboard/schedules', [ScheduleController::class, 'store'])->name('schedules.store');
+        Route::patch('/dashboard/schedules/{schedule}', [ScheduleController::class, 'update'])->name('schedules.update');
         Route::patch('/dashboard/schedules/{schedule}/toggle', [ScheduleController::class, 'toggle'])->name('schedules.toggle');
         Route::delete('/dashboard/schedules/{schedule}', [ScheduleController::class, 'destroy'])->name('schedules.destroy');
+        Route::patch('/dashboard/devices/{device}/settings', [DeviceSettingsController::class, 'update'])->name('devices.settings');
     });
 
-    // Only administrators can manage users
+    // Only administrators can manage users and lights
     Route::middleware(EnsureRole::class . ':admin')->group(function () {
         Route::get('/dashboard/users', [UserController::class, 'index'])->name('dashboard.users');
         Route::patch('/dashboard/users/{user}', [UserController::class, 'update'])->name('users.update');

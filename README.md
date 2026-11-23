@@ -1,23 +1,12 @@
-# LightSense – Laravel 12 + Tailwind 4 (Blade)
+# LightSense (Laravel 12, Blade, Tailwind 4)
 
-Pages built from the Figma design: landing page, log in, register, dashboard (desktop + mobile responsive).
+Landing page, log in and register, and a dashboard with Overview, Energy, Schedules, Activity and Devices
+(administrators also get Users). Roles: Administrator, Staff, Viewer. Open-source maps (Leaflet + OpenStreetMap).
+Device API for the ESP32 (see docs/API.md) and a fake ESP32 for testing: `php artisan lightsense:fake-esp32 KEY`.
 
 ## Install
-1. Create a fresh project:  `composer create-project laravel/laravel lightsense && cd lightsense`
-2. Copy the folders from this archive (`app/`, `resources/`, `routes/`) into the project, overwriting `routes/web.php` and `resources/css/app.css`.
-3. Set up the database in `.env` (SQLite works out of the box), then:
-   ```
-   php artisan migrate
-   npm install
-   npm run dev
-   php artisan serve
-   ```
-4. Open http://localhost:8000
-
-Notes
-- Uses Laravel's default `User` model/migration; passwords are hashed by its `hashed` cast.
-- `DashboardController` returns sample data – replace with readings from your ESP32 (e.g. a `readings` table + API route).
-- If you're on Laravel 11 (Tailwind 3), move the `@theme` colors into `tailwind.config.js`.
-
-## Dashboard update
-Added Energy, Schedules (saved to the database) and Activity pages. After copying files run `php artisan migrate`.
+1. `composer create-project laravel/laravel lightsense`
+2. Copy `app`, `bootstrap`, `database`, `docs`, `public`, `resources` and `routes` from this folder into it. Replace when asked.
+3. Set up the database in `.env`, then:  `php artisan migrate:fresh`  (wipes test data)
+4. `npm install`  then  `npm run dev`  and in a second terminal  `php artisan serve`
+5. Open http://127.0.0.1:8000 and register. The first account to register becomes the administrator.

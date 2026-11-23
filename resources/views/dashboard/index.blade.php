@@ -90,7 +90,7 @@
                          data-snapshot="{{ json_encode($snapshot) }}">
 
                         {{-- Header --}}
-                        <div class="flex items-start justify-between gap-4">
+                        <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
                             <div class="min-w-0">
                                 <h1 class="truncate text-xl font-bold tracking-tight">{{ $device->name }}</h1>
                                 <p class="mt-1 flex items-center gap-2 text-xs text-white/55">
@@ -99,10 +99,10 @@
                                 </p>
                             </div>
 
-                            <form method="GET" action="{{ route('dashboard') }}" class="relative shrink-0">
+                            <form method="GET" action="{{ route('dashboard') }}" class="relative w-full min-w-0 sm:w-auto sm:shrink-0">
                                 <label for="device" class="sr-only">Room</label>
                                 <select id="device" name="device" onchange="this.form.submit()"
-                                        class="appearance-none rounded-lg border border-white/10 bg-card py-2 pl-3 pr-8 text-xs font-medium text-white [color-scheme:dark] focus:outline-none focus:ring-2 focus:ring-brand/40">
+                                        class="appearance-none w-full max-w-full rounded-lg border border-white/10 bg-card py-2 pl-3 pr-8 text-xs font-medium text-white [color-scheme:dark] focus:outline-none focus:ring-2 focus:ring-brand/40 sm:w-auto">
                                     @foreach ($devices as $room)
                                         <option value="{{ $room->id }}" @selected($room->id === $device->id)>{{ $room->name }}</option>
                                     @endforeach
@@ -115,20 +115,20 @@
                         <section id="overview" class="mt-6 grid scroll-mt-20 grid-cols-2 gap-3 xl:grid-cols-4">
                             <article class="dash-card">
                                 <p class="dash-label">Lights</p>
-                                <p class="mt-2 text-2xl font-bold tracking-tight" data-live="lightsLabel">{{ $snapshot['lightsLabel'] }}</p>
+                                <p class="mt-2 break-words text-xl font-bold tracking-tight sm:text-2xl" data-live="lightsLabel">{{ $snapshot['lightsLabel'] }}</p>
                                 <button type="button" data-action="toggle-lights" data-live="lightsButton"
                                         class="btn btn-primary btn-xs mt-3">{{ $snapshot['lightsButton'] }}</button>
                             </article>
 
                             <article class="dash-card">
                                 <p class="dash-label">Presence</p>
-                                <p class="mt-2 text-2xl font-bold tracking-tight" data-live="presenceLabel">{{ $snapshot['presenceLabel'] }}</p>
+                                <p class="mt-2 break-words text-xl font-bold tracking-tight sm:text-2xl" data-live="presenceLabel">{{ $snapshot['presenceLabel'] }}</p>
                                 <p class="mt-3 text-[11px] text-white/45" data-live="lastMovement">{{ $snapshot['lastMovement'] }}</p>
                             </article>
 
                             <article class="dash-card">
                                 <p class="dash-label">Room brightness</p>
-                                <p class="mt-2 text-2xl font-bold tracking-tight">
+                                <p class="mt-2 break-words text-xl font-bold tracking-tight sm:text-2xl">
                                     <span data-live="lux">{{ $snapshot['lux'] }}</span>
                                     <span class="text-sm font-medium text-white/45">lux</span>
                                 </p>
@@ -139,7 +139,7 @@
 
                             <article class="dash-card">
                                 <p class="dash-label">Power now</p>
-                                <p class="mt-2 text-2xl font-bold tracking-tight">
+                                <p class="mt-2 break-words text-xl font-bold tracking-tight sm:text-2xl">
                                     <span data-live="power">{{ $snapshot['power'] }}</span>
                                     <span class="text-sm font-medium text-white/45">W</span>
                                 </p>
@@ -163,7 +163,7 @@
                                     </div>
                                 </div>
 
-                                <dl class="mt-5 grid grid-cols-3 gap-3">
+                                <dl class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
                                     <div class="rounded-xl bg-black/20 px-3 py-3 sm:px-4">
                                         <dt class="text-[11px] text-white/45">Voltage</dt>
                                         <dd class="mt-1 text-sm font-semibold"><span data-live="voltage">{{ $snapshot['voltage'] }}</span> V</dd>
@@ -207,18 +207,20 @@
 
                                 <ul class="mt-3 divide-y divide-white/10">
                                     @forelse ($schedules as $schedule)
-                                        <li class="flex items-center justify-between gap-4 py-3">
+                                        <li class="flex items-center justify-between gap-3 py-3 sm:gap-4">
                                             <div class="min-w-0">
-                                                <p class="text-sm font-medium">{{ $schedule->name }}</p>
-                                                <p class="mt-0.5 text-xs text-white/50">{{ $schedule->description }}</p>
+                                                <p class="break-words text-sm font-medium">{{ $schedule->name }}</p>
+                                                <p class="mt-0.5 break-words text-xs text-white/50">{{ $schedule->description }}</p>
                                             </div>
                                             <button type="button" role="switch"
                                                     aria-checked="{{ $schedule->enabled ? 'true' : 'false' }}"
                                                     aria-label="{{ $schedule->name }}"
                                                     data-action="toggle-schedule" data-schedule-id="{{ $schedule->id }}"
                                                     data-url="{{ route('schedules.toggle', $schedule) }}"
-                                                    class="group relative h-6 w-10 shrink-0 rounded-full bg-white/20 transition aria-checked:bg-brand">
-                                                <span class="absolute left-0.5 top-0.5 size-5 rounded-full bg-white shadow transition-transform group-aria-checked:translate-x-4"></span>
+                                                    class="group relative grid size-11 shrink-0 place-items-center rounded-lg focus-visible:outline">
+                                                <span class="relative h-5 w-9 rounded-full bg-white/20 transition group-aria-checked:bg-brand">
+                                                    <span class="absolute left-0.5 top-0.5 size-4 rounded-full bg-white shadow transition-transform group-aria-checked:translate-x-4"></span>
+                                                </span>
                                             </button>
                                         </li>
                                     @empty
@@ -232,8 +234,8 @@
                                 <h2 class="text-sm font-semibold">Recent activity</h2>
                                 <ul class="mt-3 divide-y divide-white/10" data-activity>
                                     @forelse ($snapshot['activity'] as $entry)
-                                        <li class="flex items-center justify-between gap-3 py-2.5 text-sm">
-                                            <span>{{ $entry['message'] }}</span>
+                                        <li class="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 py-2.5 text-sm">
+                                            <span class="min-w-0 flex-1 break-words">{{ $entry['message'] }}</span>
                                             <span class="shrink-0 text-xs text-white/40">{{ $entry['time'] }}</span>
                                         </li>
                                     @empty

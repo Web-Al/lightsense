@@ -171,8 +171,10 @@ if (root) {
         inFlight++;
         try {
             apply(await request(url, 'PATCH', body));
+            window.LightSenseToast?.show({ type: 'success', message: 'Your change has been saved.' });
         } catch {
             showConnectionProblem();
+            window.LightSenseToast?.show({ type: 'error', message: 'Could not save that change. Check your connection and try again.' });
         } finally {
             inFlight--;
         }

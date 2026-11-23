@@ -31,7 +31,7 @@ class UserController extends Controller
 
         $user->update($data);
 
-        return back()->with('status', "{$user->name} is now {$user->role_label}.");
+        return back()->with('success', "{$user->name} is now {$user->role_label}.");
     }
 
     public function destroy(Request $request, User $user)
@@ -46,6 +46,6 @@ class UserController extends Controller
 
         $user->delete();
 
-        return back()->with('status', "{$user->name} was deleted.");
+        return back()->with('success', "{$user->name} was deleted.");
     }
 }

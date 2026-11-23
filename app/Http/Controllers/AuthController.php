@@ -23,7 +23,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
-            return redirect()->intended(route('dashboard'));
+            return redirect()->intended(route('dashboard'))->with('success', 'Welcome back.');
         }
 
         return back()->withErrors(['email' => 'These credentials do not match our records.'])->onlyInput('email');
@@ -61,8 +61,8 @@ class AuthController extends Controller
         $redirect = redirect()->route('dashboard');
 
         return $isFirst
-            ? $redirect
-            : $redirect->with('status', 'Your account can view the dashboard. Ask an administrator for Staff access to change schedules.');
+            ? $redirect->with('success', 'Your account has been created. You are the administrator.')
+            : $redirect->with('info', 'Your account can view the dashboard. Ask an administrator for Staff access to change schedules.');
     }
 
     public function logout(Request $request)
@@ -71,6 +71,6 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', 'You have signed out.');
     }
 }

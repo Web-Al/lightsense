@@ -33,14 +33,14 @@
         <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:px-8">
             <a href="{{ route('home') }}" aria-label="LightSense home"><x-logo /></a>
 
-            <nav class="hidden items-center gap-8 text-sm md:flex" aria-label="Main">
+            <nav class="hidden items-center gap-8 text-sm lg:flex" aria-label="Main">
                 <a href="{{ route('home') }}" class="font-medium text-white">Home</a>
                 <a href="#overview" class="text-white/60 transition hover:text-white">Overview</a>
                 <a href="#features" class="text-white/60 transition hover:text-white">Features</a>
                 <a href="#hardware" class="text-white/60 transition hover:text-white">Hardware</a>
             </nav>
 
-            <div class="hidden items-center gap-5 md:flex">
+            <div class="hidden items-center gap-5 lg:flex">
                 @auth
                     <a href="{{ route('dashboard') }}" class="btn btn-primary btn-sm">Dashboard</a>
                 @else
@@ -50,12 +50,12 @@
             </div>
 
             <button type="button" data-menu-toggle="mobile-menu" aria-expanded="false" aria-label="Open menu"
-                    class="grid size-10 place-items-center rounded-lg border border-white/15 text-white md:hidden">
+                    class="grid size-10 place-items-center rounded-lg border border-white/15 text-white lg:hidden">
                 <x-icon name="menu" class="size-5" />
             </button>
         </div>
 
-        <div id="mobile-menu" class="hidden border-t border-white/10 px-5 pb-5 pt-3 md:hidden">
+        <div id="mobile-menu" class="hidden border-t border-white/10 px-5 pb-5 pt-3 lg:hidden">
             <nav class="flex flex-col text-sm" aria-label="Mobile">
                 <a href="{{ route('home') }}" class="py-2.5 font-medium text-white">Home</a>
                 <a href="#overview" class="py-2.5 text-white/70">Overview</a>
@@ -185,7 +185,7 @@
         <div class="mx-auto flex max-w-6xl flex-col gap-5 px-5 pb-10 pt-4 text-xs text-white/50 md:flex-row md:items-center md:justify-between md:px-8">
             <div class="flex flex-col gap-4 md:flex-row md:items-center md:gap-10">
                 <a href="{{ route('home') }}" aria-label="LightSense home"><x-logo /></a>
-                <nav class="flex gap-6" aria-label="Footer">
+                <nav class="flex flex-wrap gap-x-5 gap-y-2 md:gap-6" aria-label="Footer">
                     <a href="{{ route('home') }}" class="hover:text-white">Home</a>
                     <a href="#overview" class="hover:text-white">Overview</a>
                     <a href="#features" class="hover:text-white">Features</a>

@@ -1,6 +1,6 @@
-<a href="{{ route('home') }}" {{ $attributes->merge(['class' => 'flex items-center gap-2 text-sm font-semibold text-white']) }}>
-    <span class="grid size-8 place-items-center rounded-lg bg-white/10">
-        <svg class="size-4 text-amber" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 00-4 12.74V17a1 1 0 001 1h6a1 1 0 001-1v-2.26A7 7 0 0012 2zM9 20h6v1a1 1 0 01-1 1h-4a1 1 0 01-1-1v-1z"/></svg>
+<a href="{{ route('home') }}" {{ $attributes->merge(['class' => 'flex items-center gap-2 font-display text-sm font-semibold text-stone-900']) }}>
+    <span class="grid size-8 place-items-center rounded-sm border border-stone-900/15">
+        <svg class="size-5 text-brass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"><circle cx="12" cy="9" r="6"/><path d="M9.5 15v2h5v-2M10 20h4M10 9l1 2 2-2 1 2"/></svg>
     </span>
     LightSense
 </a>

@@ -30,7 +30,7 @@ class DeviceController extends Controller
     {
         $device->update($this->validated($request));
 
-        return back()->with('status', "{$device->name} was updated.");
+        return back()->with('success', "{$device->name} was updated.");
     }
 
     public function regenerateKey(Device $device)
@@ -45,7 +45,7 @@ class DeviceController extends Controller
     {
         $device->delete(); // its readings are deleted too
 
-        return back()->with('status', "{$device->name} was deleted.");
+        return back()->with('success', "{$device->name} was deleted.");
     }
 
     private function validated(Request $request): array

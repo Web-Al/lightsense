@@ -4,11 +4,13 @@
         @csrf
         @method('PATCH')
         <button type="submit" role="switch" aria-checked="{{ $schedule->enabled ? 'true' : 'false' }}" aria-label="Turn {{ $schedule->name }} {{ $schedule->enabled ? 'off' : 'on' }}"
-            class="relative block h-4 w-7 rounded-full transition {{ $schedule->enabled ? 'bg-amber' : 'bg-line' }}">
-            <span class="absolute top-0.5 size-3 rounded-full bg-white transition-all {{ $schedule->enabled ? 'left-3.5' : 'left-0.5' }}"></span>
+            class="group relative grid size-11 shrink-0 place-items-center rounded-sm focus-visible:outline">
+            <span class="relative h-5 w-9 rounded-sm transition {{ $schedule->enabled ? 'bg-brass' : 'bg-line' }}">
+                <span class="absolute left-0.5 top-0.5 size-4 rounded-sm bg-white shadow transition-transform {{ $schedule->enabled ? 'translate-x-4' : '' }}"></span>
+            </span>
         </button>
     </form>
 @else
     {{-- Viewers see the state but cannot change it --}}
-    <span class="text-[10px] font-semibold {{ $schedule->enabled ? 'text-amber' : 'text-neutral-500' }}">{{ $schedule->enabled ? 'On' : 'Off' }}</span>
+    <span class="text-[10px] font-semibold {{ $schedule->enabled ? 'text-brass' : 'text-stone-500' }}">{{ $schedule->enabled ? 'On' : 'Off' }}</span>
 @endif
